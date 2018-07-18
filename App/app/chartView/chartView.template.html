@@ -1,0 +1,17 @@
+<div>
+<span id="view1Time">* * Updated @ {{$ctrl.time | date:'mediumTime'}} * * </span> 
+    <div class="chart-container" style="display: block; width: 80%; height: 80%;">
+    <canvas 
+        id="line" 
+        class="chart chart-line ng-isolate-scope" 
+        chart-data="data" 
+        chart-labels="labels" 
+        chart-series="series" 
+        chart-options="options"
+        chart-colors = "colors"
+        chart-dataset-override="datasetOverride2">
+    </canvas>
+    </div>
+</div>
+
+
