@@ -14,9 +14,10 @@ component('chartView', {
             $scope.labels = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
             $scope.series = ['Actual', 'Goal'];
             $scope.colors = ['#45b7cd', '#ff0000'];
-
+			$scope.showError = false;   
             //Chart Data http request                            
-            $http.get("http://127.0.0.1:8887/data/lineGraph_temp.json").then(function(response) {
+            $http.get("http://127.0.0.1:8887/data/lineGraph_temp.json").
+			then(function(response) {
                 self.data = response.data.tt_lineData;
                 $scope.data = [
                     [],
@@ -30,7 +31,11 @@ component('chartView', {
                     $scope.data[0].push(item.Actual);
                     $scope.data[1].push(item.Goal);
                 });
-            });
+            }, function (error) {
+			//alert message  
+
+			$scope.showError = true;    
+			});
 
             //Chart Customisation
             $scope.datasetOverride2 = [{

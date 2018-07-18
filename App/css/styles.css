@@ -40,3 +40,8 @@ h3{
 #view1Time{
         margin-left:80px;
 }
+ #loadError{
+	 color: red;
+	 text-align:center;
+	 
+ }
