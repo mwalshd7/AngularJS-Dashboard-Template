@@ -3,8 +3,14 @@ module('chartBarView').
 component('chartBar', {
     templateUrl: 'app/chartBarView/chartBarView.template.html',
 
-    controller: ['$scope', 'shareTime',
-        function LineCtrl($scope, shareTime) {
+    controller: ['$scope', 'shareTime', '$location','$timeout',
+        function LineCtrl($scope, shareTime, $location, $timeout) {
+			
+			//Timer to switch View
+			var goToFirstPage = function(){
+				$location.path('/chartView');
+			};
+			
             var self = this;
             //Shared Service Time
             self.time = shareTime.currentTime;
@@ -73,6 +79,9 @@ component('chartBar', {
                     fontSize: 20
                 },
             };
+			$timeout(goToFirstPage, 60000);
+            
+			
         }
     ]
 });

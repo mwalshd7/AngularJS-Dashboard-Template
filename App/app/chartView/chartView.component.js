@@ -4,11 +4,17 @@ module('chartView').
 component('chartView', {
     templateUrl: 'app/chartView/chartView.template.html',
 
-    controller: ['$scope', '$http', 'shareTime',
-        function LineCtrl($scope, $http, shareTime) {
+    controller: ['$scope', '$http', 'shareTime', '$location','$timeout', '$route',
+        function LineCtrl($scope, $http, shareTime, $location, $timeout, $route) {
+			
+			//Timer to switch View
+			var goToSecondPage = function(){
+				$location.path('/chartBar');
+			};
+						
             //Shared Service 
             var self = this;
-            self.time = shareTime.currentTime;
+            self.time = new Date();
             
             //Chart Setup
             $scope.labels = ['7am', '8am', '9am', '10am', '11am', '12pm', '1pm', '2pm', '3pm', '4pm', '5pm', '6pm', '7pm'];
@@ -18,6 +24,7 @@ component('chartView', {
             //Chart Data http request                            
             $http.get("http://127.0.0.1:8887/data/lineGraph_temp.json").
 			then(function(response) {
+                //console.log(response);
                 self.data = response.data.tt_lineData;
                 $scope.data = [
                     [],
@@ -79,7 +86,13 @@ component('chartView', {
                     }],
                 }
             }; // Doc's here for options https://www.chartjs.org/docs/latest/configuration/title.html
-
+		
+			
+			$timeout(goToSecondPage, 60000);
+            
+			
+			
+			
         }
     ]
 });

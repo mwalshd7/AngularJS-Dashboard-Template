@@ -1,6 +1,6 @@
 angular.
 module('myApp').
-factory('shareTime', function() {
+service('shareTime', function() {
     //private variable
     var _currentTime = {};
     _currentTime = new Date();
@@ -8,5 +8,6 @@ factory('shareTime', function() {
     //public API
     return {
         currentTime: _currentTime
+        
     };
 })
