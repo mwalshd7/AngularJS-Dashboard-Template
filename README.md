@@ -1,3 +1,4 @@
+# AngularJS-Dashboard-Template
 # Project Title
 Demo Project to create an Enterprise Dashboard using AngularJS. 
 
